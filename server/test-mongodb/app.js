@@ -1,8 +1,7 @@
 module.exports = function(app)
 {
-
     app.get('/api', (req, res) => {
-      res.send('App works');
+                  res.send('App work');
     });
     app.get("/api/test", findAllMessages);
     app.post("/api/test", createMessage);
@@ -14,12 +13,13 @@ module.exports = function(app)
     var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
     var password = process.env.MLAB_PASSWORD_WEBDEV;
     connectionString = 'mongodb://' + username + ':' + password;
-    connectionString += '@ds129344.mlab.com:29344/heroku_54hczqj6'; 
+    connectionString += '@ds129344.mlab.com:29344/heroku_54hczqj6';
   }
 
   var mongoose = require("mongoose");
-    mongoose.connect(connectionString);
-
+      mongoose.connect(connectionString,{
+               useMongoClient: true
+           });
     var TestSchema = mongoose.Schema({
         message: String
     });
