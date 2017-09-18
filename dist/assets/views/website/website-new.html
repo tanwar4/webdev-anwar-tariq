@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Meta tags for making website for mobile-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+
+  <meta charset="UTF-8">
+  <title>New Website</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
+  <link href="../../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+      <div class="col-sm-4">
+        <!-- Back Mark-->
+        <div class="navbar-text pull-left">
+          <a href="#">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </div>
+
+        <!-- Header -->
+        <div class="navbar-header pull-left">
+          <a class="navbar-brand" href="#">
+            New Website
+          </a>
+        </div>
+
+        <div class="navbar-text pull-right hidden-xs">
+          <a href="#">
+            <span class="glyphicon glyphicon-plus"></span>
+          </a>
+        </div>
+      </div> <!-- Small Screen div -->
+
+
+    <div class="col-sm-6 hidden-xs">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          New Website
+        </a>
+      </div>
+
+    </div>
+
+    <div class="col-sm-2">
+      <!-- OK Button -->
+      <div class="navbar-text pull-right">
+        <a href="#">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Main content Body -->
+ <div class="row container-fluid">
+   <div class="col-sm-4 hidden-xs">
+     <p><a href="#"><b>Website 1</b></a>
+       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+     </p>
+
+     <p><a href="#"><b>Website 2</b></a>
+       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+     </p>
+
+     <p><a href="#"><b>Website 3</b></a>
+       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+     </p>
+   </div>
+
+   <!-- Right Pane form -->
+   <div class="col-xs-12 col-sm-8">
+     <div class="form-group">
+       <label for="inputName">Name</label>
+       <input type="text" class="form-control" id="inputName" placeholder="Name">
+     </div>
+
+     <div class="form-group">
+       <label for="desc">Description</label>
+       <textarea class="form-control" rows="5" id="desc"></textarea>
+     </div>
+
+   </div>  <!-- Right Pane -->
+
+ </div> <!-- Body content-->
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+</body>
+</html>
