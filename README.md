@@ -16,7 +16,7 @@ Hosted App: https://webdev-anwar-tariq.herokuapp.com
 
 Project:
 
-Assignment:
+Assignment: https://webdev-anwar-tariq.herokuapp.com/assets/
 
 
  
