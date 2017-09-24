@@ -20,45 +20,47 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="row container-fluid">
 
-      <div class="col-sm-4">
+      <div class="col-sm-1">
         <!-- Back Mark-->
         <div class="navbar-text pull-left">
-          <a href="#">
+          <a href="website-list.html" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </div>
+      </div>
+
+      <div class="col-sm-3 hidden-xs">
 
         <!-- Header -->
-        <div class="navbar-header pull-left">
+        <div class="navbar-header pull-left ">
           <a class="navbar-brand" href="#">
-            New Website
+           <b> Websites </b>
           </a>
         </div>
 
-        <div class="navbar-text pull-right hidden-xs">
-          <a href="#">
+
+        <div class="navbar-text pull-right">
+          <a href="website-new.html" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </div>
-      </div> <!-- Small Screen div -->
+      </div>
 
+    <div class="col-sm-8 ">
 
-    <div class="col-sm-6 hidden-xs">
-      <div class="navbar-header">
+      <div class="navbar-header pull-left">
         <a class="navbar-brand" href="#">
-          New Website
+          <b>New Website</b>
         </a>
       </div>
 
-    </div>
-
-    <div class="col-sm-2">
       <!-- OK Button -->
       <div class="navbar-text pull-right">
-        <a href="#">
+        <a href="website-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
+
     </div>
 
   </div>
@@ -67,21 +69,23 @@
 <!-- Main content Body -->
  <div class="row container-fluid">
    <div class="col-sm-4 hidden-xs">
-     <p><a href="#"><b>Website 1</b></a>
-       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
-     </p>
+     <ul class="list-group">
+       <li class="list-group-item"><a href="../page/page-list.html"><b>Website 1</b></a>
+         <a href="website-edit.html"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+       </li>
 
-     <p><a href="#"><b>Website 2</b></a>
-       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
-     </p>
+       <li class="list-group-item"><a href="../page/page-list.html"><b>Website 2</b></a>
+         <a href="website-edit.html"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+       </li>
 
-     <p><a href="#"><b>Website 3</b></a>
-       <a href="#"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
-     </p>
+       <li class="list-group-item"><a href="../page/page-list.html"><b>Website 3</b></a>
+         <a href="website-edit.html"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+       </li>
+     </ul>
    </div>
 
    <!-- Right Pane form -->
-   <div class="col-xs-12 col-sm-8">
+   <div class="col-sm-8">
      <div class="form-group">
        <label for="inputName">Name</label>
        <input type="text" class="form-control" id="inputName" placeholder="Name">
@@ -100,7 +104,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="profile.html">
+      <a href="../user/profile.html">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
