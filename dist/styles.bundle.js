@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\ninput{\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.btn{\r\n  margin-bottom: 5px;\r\n}\r\n.row{\r\n  margin: 0px;\r\n}\r\n.body{\r\n  padding-top: 70px;\r\n  padding-bottom: 70px;\r\n}\r\n.wdv-toolbar{\r\n  position: absolute;\r\n  right: 2px;\r\n  background-color: lightgrey;\r\n  padding: 3px;\r\n  border-bottom-left-radius: 9px;\r\n  opacity: 0.7;\r\n}\r\n", ""]);
 
 // exports
 
