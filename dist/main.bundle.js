@@ -736,9 +736,7 @@ var ProfileComponent = (function () {
         this.route.params.subscribe(function (params) {
             _this.userId = params['uid'];
         });
-        console.log(this.userId);
         this.user = this.userService.findUserById(this.userId);
-        console.log(this.user);
     };
     ProfileComponent.prototype.update = function () {
         this.userService.updateUser(this.userId, this.user);
@@ -1695,7 +1693,6 @@ var UserService = (function () {
         });
     };
     UserService.prototype.findUserById = function (userId) {
-        console.log(this.users);
         return this.users.find(function (user) {
             return user._id === userId;
         });
