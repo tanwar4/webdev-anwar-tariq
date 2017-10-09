@@ -20,7 +20,6 @@ export class UserService{
   }
 
   findUserById(userId:string){
-       console.log(this.users);
        return this.users.find(function (user) {
          return user._id === userId;
        });

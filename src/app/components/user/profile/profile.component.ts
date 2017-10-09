@@ -20,9 +20,7 @@ export class ProfileComponent implements OnInit {
       this.userId = params['uid'];
     });
 
-    console.log(this.userId);
     this.user = this.userService.findUserById(this.userId);
-    console.log(this.user);
   }
 
   update(){
