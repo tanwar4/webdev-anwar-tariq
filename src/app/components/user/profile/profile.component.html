@@ -1,0 +1,66 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Profile</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a (click)="update()" [routerLink]="['/user/',userId]" class="navbar-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="body container-fluid">
+  <form>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input [(ngModel)]="user.username" name="username"
+             type="text" class="form-control" id="username" placeholder="Alice" >
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input [(ngModel)]="user.email" name="email"
+        type="email" class="form-control" id="email" placeholder=alice@gmail.com>
+    </div>
+
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input [(ngModel)]="user.firstName" name="firstName"
+        type="text" class="form-control" id="first-name" placeholder=ALice>
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input [(ngModel)]="user.lastName" name="lastName"
+        type="text" class="form-control" id="last-name" placeholder=WonderLand>
+    </div>
+
+    <a class="btn btn-primary btn-block"
+       [routerLink]="['/user/',userId,'website']">Websites</a>
+    <a class="btn btn-danger btn-block "
+       [routerLink]="['/login']" >Logout</a>
+
+  </form>
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user/',userId]">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

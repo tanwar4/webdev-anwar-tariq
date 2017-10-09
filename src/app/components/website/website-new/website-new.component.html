@@ -1,0 +1,90 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-1">
+      <!-- Back Mark-->
+      <div class="navbar-text pull-left">
+        <a href="website-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-sm-3 hidden-xs">
+
+      <!-- Header -->
+      <div class="navbar-header pull-left ">
+        <a class="navbar-brand" href="#">
+          <b> Websites </b>
+        </a>
+      </div>
+
+
+      <div class="navbar-text pull-right">
+        <a href="website-new.html" class="navbar-link">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-sm-8 ">
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand" href="#">
+          <b>New Website</b>
+        </a>
+      </div>
+
+      <!-- OK Button -->
+      <div class="navbar-text pull-right">
+        <a (click)="addWebsite()" [routerLink]="['/user/',userId,'website']" class="navbar-link">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- Main content Body -->
+<div class="body row container-fluid">
+  <div class="col-sm-4 hidden-xs">
+    <ul class="list-group">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let w of websites"  [routerLink]="['/detail', w._id]">
+          <a [routerLink]="['/user/',userId,'website',w._id,'page']"><b>{{w.name}}</b> </a>
+          <a [routerLink]="['/user/',userId,'website',w._id]"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
+        </li>
+      </ul>
+    </ul>
+  </div>
+
+  <!-- Right Pane form -->
+  <div class="col-sm-8">
+    <div class="form-group">
+      <label for="inputName">Name</label>
+      <input [(ngModel)]='name' type="text" class="form-control" id="inputName" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+      <label for="desc">Description</label>
+      <textarea [(ngModel)]='desc' class="form-control" rows="5" id="desc"></textarea>
+    </div>
+
+  </div>  <!-- Right Pane -->
+
+</div> <!-- Body content-->
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

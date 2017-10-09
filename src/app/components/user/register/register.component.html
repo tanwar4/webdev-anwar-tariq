@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div *ngIf="dupFlag"
+       class="alert alert-danger">
+    {{dupUserMsg}}
+  </div>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
+  <h1>Register</h1>
+
+  <form (ngSubmit) = "register()" #f="ngForm">
+
+    <input   placeholder="username"
+             name="username"
+             type="text"
+             class="form-control"
+             ngModel
+             required
+             #username="ngModel"/>
+   <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+   </span>
+
+    <input   placeholder="password"
+             name="password"
+             type="password"
+             class="form-control"
+             ngModel
+             required
+             #password="ngModel"/>
+   <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+   </span>
+
+    <input   placeholder="password"
+             name="password2"
+             type="password"
+             class="form-control"
+             ngModel
+             required
+             #password2="ngModel"/>
+   <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+   </span>
+
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Register</button>
+
+
+  </form>
+
+  <button [routerLink]="['/login']"class="btn btn-danger btn-block">Cancel</button>
+
+</div>
