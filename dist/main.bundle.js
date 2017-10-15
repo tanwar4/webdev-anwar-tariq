@@ -1334,9 +1334,19 @@ var WidgetHeaderComponent = (function () {
             _this.pageId = params['pid'];
             _this.widgetId = params['wgid'];
         });
+        if (this.widgetId) {
+            this.widget = this.widgetService.findWidgetById(this.widgetId);
+            this.size = this.widget.size;
+            this.text = this.widget.text;
+        }
     };
     WidgetHeaderComponent.prototype.createWidget = function () {
-        this.widgetService.createWidget({ "type": "HEADING", "text": this.text, "size": this.size }, this.pageId);
+        if (this.widgetId) {
+            this.widgetService.updateWidget({ "type": "HEADING", "text": this.text, "size": this.size }, this.widgetId);
+        }
+        else {
+            this.widgetService.createWidget({ "type": "HEADING", "text": this.text, "size": this.size }, this.pageId);
+        }
     };
     WidgetHeaderComponent.prototype.deleteWidget = function () {
         if (this.widgetId) {
@@ -1417,9 +1427,25 @@ var WidgetImageComponent = (function () {
             _this.pageId = params['pid'];
             _this.widgetId = params['wgid'];
         });
+        if (this.widgetId) {
+            this.widget = this.widgetService.findWidgetById(this.widgetId);
+            this.width = this.widget.width;
+            this.url = this.widget.url;
+            this.text = this.widget.text;
+        }
     };
     WidgetImageComponent.prototype.createWidget = function () {
-        this.widgetService.createWidget({ "type": "IMAGE", "text": this.text, "width": this.width, "url": this.url }, this.pageId);
+        if (this.widgetId) {
+            this.widgetService.updateWidget({ "type": "IMAGE", "text": this.text, "width": this.width, "url": this.url }, this.widgetId);
+        }
+        else {
+            this.widgetService.createWidget({
+                "type": "IMAGE",
+                "text": this.text,
+                "width": this.width,
+                "url": this.url
+            }, this.pageId);
+        }
     };
     WidgetImageComponent.prototype.deleteWidget = function () {
         if (this.widgetId) {
@@ -1500,9 +1526,19 @@ var WidgetYoutubeComponent = (function () {
             _this.pageId = params['pid'];
             _this.widgetId = params['wgid'];
         });
+        if (this.widgetId) {
+            this.widget = this.widgetService.findWidgetById(this.widgetId);
+            this.width = this.widget.width;
+            this.url = this.widget.url;
+        }
     };
     WidgetYoutubeComponent.prototype.createWidget = function () {
-        this.widgetService.createWidget({ "type": "YOUTUBE", "width": this.width, "url": this.url }, this.pageId);
+        if (this.widgetId) {
+            this.widgetService.updateWidget({ "type": "YOUTUBE", "width": this.width, "url": this.url }, this.widgetId);
+        }
+        else {
+            this.widgetService.createWidget({ "type": "YOUTUBE", "width": this.width, "url": this.url }, this.pageId);
+        }
     };
     WidgetYoutubeComponent.prototype.deleteWidget = function () {
         if (this.widgetId) {
@@ -1546,7 +1582,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-list/widget-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Navigation Bar -->\n<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--back mark-->\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/',userId,'website',webId,'page']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </p>\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header pull-left\">\n      <a class=\"navbar-brand thick\">\n        <b>Widgets</b>\n      </a>\n    </p>\n\n\n    <!--plus mark-->\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId,'website',webId,'page',pageId,'widget','new']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n\n<!-- Main content of the body-->\n\n<div class=\"body container-fluid\">\n\n\n\n  <div *ngFor=\"let widget of widgets\">\n    <div class=\"wdv-widget\">\n      <div class=\"wdv-toolbar\">\n        <a [routerLink]=\"['/user/',userId,'website',webId,'page',pageId,'widget',widget._id]\">\n          <span class=\"glyphicon glyphicon-cog\"></span>\n        </a>\n        <span class=\"glyphicon glyphicon-menu-hamburger\"></span>\n      </div>\n    </div>\n\n    <div [ngSwitch]=\"widget.widgetType\">\n\n        <div *ngSwitchCase=\"'HEADING'\">\n          <h2> {{widget.text}}</h2>\n        </div>\n\n        <div *ngSwitchCase=\"'YOUTUBE'\">\n          <iframe width=\"100%\" height=\"315\" [src]=\"sanitize(widget.url)\"></iframe>\n        </div>\n\n        <div *ngSwitchCase=\"'IMAGE'\">\n          <img width=\"100%\" height=\"300\"\n               [src]=\"sanitize(widget.url)\">\n        </div>\n\n        <div *ngSwitchCase=\"'HTML'\">\n          <p> {{widget.text}}</p>\n        </div>\n\n    </div>\n\n  </div>\n\n</div>\n\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId]\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
+module.exports = "<!-- Navigation Bar -->\n<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--back mark-->\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/',userId,'website',webId,'page']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </p>\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header pull-left\">\n      <a class=\"navbar-brand thick\">\n        <b>Widgets</b>\n      </a>\n    </p>\n\n\n    <!--plus mark-->\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId,'website',webId,'page',pageId,'widget','new']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n\n<!-- Main content of the body-->\n\n<div class=\"body container-fluid\">\n\n\n\n  <div *ngFor=\"let widget of widgets\">\n    <div class=\"wdv-widget\">\n      <div class=\"wdv-toolbar\">\n        <a [routerLink]=\"['/user/',userId,'website',webId,'page',pageId,'widget',widget._id]\">\n          <span class=\"glyphicon glyphicon-cog\"></span>\n        </a>\n        <span class=\"glyphicon glyphicon-menu-hamburger\"></span>\n      </div>\n    </div>\n\n    <div [ngSwitch]=\"widget.widgetType\">\n\n        <div *ngSwitchCase=\"'HEADING'\">\n          <h2> {{widget.text}}</h2>\n        </div>\n\n        <div *ngSwitchCase=\"'YOUTUBE'\">\n          <iframe [style.width]=\"widget.width+'%'\" height=\"315\" [src]=\"sanitize(widget.url)\"></iframe>\n        </div>\n\n        <div *ngSwitchCase=\"'IMAGE'\">\n          <img [style.width]=\"widget.width+'%'\" height=\"300\"\n               [src]=\"sanitize(widget.url)\">\n        </div>\n\n        <div *ngSwitchCase=\"'HTML'\">\n          <p> {{widget.text}}</p>\n        </div>\n\n    </div>\n\n  </div>\n\n</div>\n\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId]\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1987,7 +2023,7 @@ var WidgetService = (function () {
             new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("345", "IMAGE", "321", "", "", "100", "http://lorempixel.com/400/200/"),
             new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("456", "HTML", "321", "", "Html content from service", "", ""),
             new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("567", "HEADING", "321", 4, "Lorem Ipsum", "", ""),
-            new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("678", "YOUTUBE", "321", "", "", "100%", "https://www.youtube.com/embed/nhyc5ca3eVw"),
+            new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("678", "YOUTUBE", "321", "", "", "100", "https://www.youtube.com/embed/nhyc5ca3eVw"),
             new __WEBPACK_IMPORTED_MODULE_1__model_widget_model_client__["a" /* Widget */]("789", "HTML", "321", "", "another html contents", "", "")
         ];
     }
@@ -2026,12 +2062,23 @@ var WidgetService = (function () {
             this.widgets.push(w);
         }
     };
-    WidgetService.prototype.updateWidget = function (widgetId, widget) {
+    WidgetService.prototype.updateWidget = function (widget, widgetId) {
         var update = this.widgets.find(function (widget) {
             return widget._id === widgetId;
         });
-        update.name = widget.name;
-        update.text = widget.text;
+        if (widget.type === "YOUTUBE") {
+            update.width = widget.width;
+            update.url = widget.url;
+        }
+        else if (widget.type == "IMAGE") {
+            update.text = widget.text;
+            update.url = widget.url;
+            update.width = widget.width;
+        }
+        else if (widget.type === "HEADING") {
+            update.text = widget.text;
+            update.size = widget.size;
+        }
     };
     WidgetService.prototype.deleteWidget = function (widgetId) {
         var w = this.widgets.find(function (widget) {
