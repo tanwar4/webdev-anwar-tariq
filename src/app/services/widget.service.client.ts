@@ -10,7 +10,7 @@ export class WidgetService{
           new Widget("345","IMAGE","321","","","100","http://lorempixel.com/400/200/"),
           new Widget("456","HTML","321","","Html content from service","",""),
           new Widget("567","HEADING","321",4,"Lorem Ipsum","",""),
-          new Widget("678","YOUTUBE","321","","","100%","https://www.youtube.com/embed/nhyc5ca3eVw"),
+          new Widget("678","YOUTUBE","321","","","100","https://www.youtube.com/embed/nhyc5ca3eVw"),
           new Widget("789","HTML","321","","another html contents","","")
   ];
 
@@ -53,15 +53,29 @@ export class WidgetService{
 
   }
 
-  updateWidget(widgetId:String, widget:any){
+  updateWidget( widget:any,widgetId:string){
     const update:Widget = this.widgets.find(function (widget) {
       return widget._id === widgetId;
     });
-    update.name = widget.name;
-    update.text = widget.text;
+    if(widget.type === "YOUTUBE"){
+      update.width = widget.width;
+      update.url = widget.url;
+
+    }
+    else if(widget.type == "IMAGE"){
+      update.text = widget.text;
+      update.url = widget.url;
+      update.width = widget.width;
+
+    }
+    else if(widget.type === "HEADING"){
+      update.text = widget.text;
+      update.size = widget.size;
+    }
+
   }
 
-  deleteWidget(widgetId:String){
+  deleteWidget(widgetId:string){
     const w:Widget = this.widgets.find(function (widget) {
       return widget._id === widgetId;
     });

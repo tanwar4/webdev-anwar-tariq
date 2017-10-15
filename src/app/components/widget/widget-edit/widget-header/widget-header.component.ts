@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {WidgetService} from "../../../../services/widget.service.client";
+import {Widget} from "../../../../model/widget.model.client";
 
 @Component({
   selector: 'app-widget-header',
@@ -14,6 +15,7 @@ export class WidgetHeaderComponent implements OnInit {
   text:string;
   size:string;
   widgetId:string;
+  widget:Widget;
 
   constructor(private route:ActivatedRoute, private widgetService:WidgetService) {
   }
@@ -25,10 +27,20 @@ export class WidgetHeaderComponent implements OnInit {
       this.pageId = params['pid'];
       this.widgetId=params['wgid'];
     });
+    if(this.widgetId){
+      this.widget = this.widgetService.findWidgetById(this.widgetId);
+      this.size= this.widget.size;
+      this.text = this.widget.text;
+    }
   }
 
   createWidget(){
-    this.widgetService.createWidget({"type":"HEADING","text":this.text,"size":this.size},this.pageId);
+    if(this.widgetId){
+      this.widgetService.updateWidget({"type":"HEADING","text":this.text,"size":this.size},this.widgetId);
+    }
+    else {
+      this.widgetService.createWidget({"type": "HEADING", "text": this.text, "size": this.size}, this.pageId);
+    }
   }
   deleteWidget(){
     if(this.widgetId){
