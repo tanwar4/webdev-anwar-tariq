@@ -4,7 +4,7 @@
 
     <!--back mark-->
     <p class="navbar-text pull-left">
-      <a href="../website/website-list.html" class="navbar-link">
+      <a [routerLink]="['/user/',userId,'website']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -18,7 +18,7 @@
 
     <!--plus mark-->
     <p class="navbar-text pull-right">
-      <a href="page-new.html" class="navbar-link" class="navbar-link">
+      <a [routerLink]="['/user/',userId,'website',webId,'page','new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -43,7 +43,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/',userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

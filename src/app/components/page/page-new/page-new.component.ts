@@ -25,7 +25,7 @@ export class PageNewComponent implements OnInit {
     });
   }
 
-/*  createPage(){
+  createPage(){
     this.pageService.createPage({"name":this.name,"desc":this.desc},this.webId);
-  }*/
+  }
 }

@@ -25,7 +25,9 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   addWebsite(){
-    this.websiteService.createWebsite(new Website("",this.name,this.userId,this.desc));
+    if(this.name) {
+      this.websiteService.createWebsite(new Website("", this.name, this.userId, this.desc));
+    }
   }
 
 }

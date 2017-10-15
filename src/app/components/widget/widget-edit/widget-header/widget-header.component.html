@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <!--back mark-->
     <p class="navbar-text pull-left">
-      <a href="widget-list.html" class="navbar-link">
+      <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -17,7 +17,8 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a href="widget-list.html" class="navbar-link">
+      <a (click)="createWidget()"
+        [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget']" class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -30,21 +31,25 @@
   <form>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="name">
+      <input
+        type="text" class="form-control" id="name" placeholder="name">
     </div>
 
     <div class="form-group">
       <label for="text">Text</label>
-      <input type="text" class="form-control" id="text" placeholder="US Senate Reaches Compromise On Emergency">
+      <input  [(ngModel)]='text' name="text"
+        type="text" class="form-control" id="text" placeholder="US Senate Reaches Compromise On Emergency">
     </div>
 
     <div class="form-group">
       <label for="url">Size</label>
-      <input type="text" class="form-control" id="url" placeholder="3">
+      <input  [(ngModel)]='size' name="size"
+        type="text" class="form-control" id="url" placeholder="3">
     </div>
 
     <a class="btn btn-danger btn-block "
-       href="widget-list.html" >Delete</a>
+       (click)="deleteWidget()"
+       [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget']" >Delete</a>
 
   </form>
 </div>
@@ -53,7 +58,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/',userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

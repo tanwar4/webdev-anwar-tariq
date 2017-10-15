@@ -38,13 +38,13 @@ export class UserService{
     }
 
   updateUser(userId:String, user:any){
-   const update:User = this.users.find(function (user) {
-                    return user._id === userId;
-                    });
-         update.username = user.username;
-         update.email = user.email;
-         update.firstName = user.firstName;
-         update.lastName = user.lastName;
+      const update:User = this.users.find(function (user) {
+                      return user._id === userId;
+                      });
+           update.username = user.username;
+           update.email = user.email;
+           update.firstName = user.firstName;
+           update.lastName = user.lastName;
   }
   /*
    deleteUser(userId:String){

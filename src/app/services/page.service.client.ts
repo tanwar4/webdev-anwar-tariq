@@ -28,22 +28,20 @@ export class PageService{
     this.pages.push(p);
   }
 
-/*  updatePage(pageId:String, Page:any){
-    update:Page = this.pages.find(function (page) {
+  updatePage(pageId:String, page:any){
+    const update:Page = this.pages.find(function (page) {
       return page._id === pageId;
     });
     update.name = page.name;
-    update.websiteId = page.webid;
     update.description= page.desc;
   }
 
   deletePage(pageId:String){
-
-     p:Page = this.pages.find(function (page) {
+    const p:Page = this.pages.find(function (page) {
       return page._id === pageId;
     });
 
-    index:Number = this.pages.index(p);
+    const index:number = this.pages.indexOf(p);
     this.pages.splice(index,1);
-  }*/
+  }
 }

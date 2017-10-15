@@ -27,6 +27,7 @@ import { WidgetImageComponent } from './components/widget/widget-edit/widget-ima
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import {WebsiteService} from "./services/website.service.client";
 import {PageService} from "./services/page.service.client";
+import {WidgetService} from "./services/widget.service.client";
 
 @NgModule({
   // Declare components here
@@ -57,7 +58,7 @@ import {PageService} from "./services/page.service.client";
     Routing
   ],
   // Client Side services here
-  providers: [ TestService,UserService,WebsiteService,PageService],
+  providers: [ TestService,UserService,WebsiteService,PageService,WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@
 
     <!--back mark-->
     <p class="navbar-text pull-left">
-      <a href="../page/page-list.html" class="navbar-link">
+      <a [routerLink]="['/user/',userId,'website',webId,'page']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -19,7 +19,7 @@
 
     <!--plus mark-->
     <p class="navbar-text pull-right">
-      <a href="widget-chooser.html" class="navbar-link">
+      <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -30,54 +30,40 @@
 <!-- Main content of the body-->
 
 <div class="body container-fluid">
-  <div class="wdv-widget">
-    <div class="wdv-toolbar">
-      <a href="widget-heading.html">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </div>
-    <h2> GIZMODO</h2>
-  </div>
 
-  <div class="wdv-widget">
-    <div class="wdv-toolbar">
-      <a href="widget-heading.html">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </div>
-    <h3> US Senate Reaches Compromises on Emergency Zika Funding </h3>
-  </div>
 
-  <div class="wdv-widget">
-    <div class="wdv-toolbar">
-      <a href="widget-image.html">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </div>
-    <img width="100%" src="http://lorempixel.com/400/200" />
-  </div>
 
-  <div class="wdv-widget">
-    <div class="wdv-toolbar">
-      <a href="#">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+  <div *ngFor="let widget of widgets">
+    <div class="wdv-widget">
+      <div class="wdv-toolbar">
+        <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget',widget._id]">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </div>
     </div>
-    <p>Colin Furze is back with another bizarre invention that will make you wonder why more mad scientists haven’t embraced YouTube yet. This time he’s <a href="https://www.youtube.com/watch?v=Koxzz7LDmEE&amp;feature=em-uploademail" target="_blank" rel="noopener">turned a BMW E30 into a drivable hot tub</a>, complete with a pair of leaf blowers used to generate bubbles, and a <a href="https://www.youtube.com/watch?v=KHshdXDxR3c&amp;feature=youtu.be" target="_blank" rel="noopener">barbecue grill in the trunk</a>.<span class="read-more-placeholder"></span></p>
-  </div>
 
-  <div class="wdv-widget">
-    <div class="wdv-toolbar">
-      <a href="widget-youtube.html">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    <div [ngSwitch]="widget.widgetType">
+
+        <div *ngSwitchCase="'HEADING'">
+          <h2> {{widget.text}}</h2>
+        </div>
+
+        <div *ngSwitchCase="'YOUTUBE'">
+          <iframe width="100%" height="315" [src]="sanitize(widget.url)"></iframe>
+        </div>
+
+        <div *ngSwitchCase="'IMAGE'">
+          <img width="100%" height="300"
+               [src]="sanitize(widget.url)">
+        </div>
+
+        <div *ngSwitchCase="'HTML'">
+          <p> {{widget.text}}</p>
+        </div>
+
     </div>
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/KUH0KQ1qMiw" frameborder="0" allowfullscreen></iframe>
+
   </div>
 
 </div>
@@ -87,7 +73,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/',userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

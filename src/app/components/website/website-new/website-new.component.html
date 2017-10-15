@@ -5,7 +5,7 @@
     <div class="col-sm-1">
       <!-- Back Mark-->
       <div class="navbar-text pull-left">
-        <a href="website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/',userId,'website']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -22,7 +22,7 @@
 
 
       <div class="navbar-text pull-right">
-        <a href="website-new.html" class="navbar-link">
+        <a [routerLink]="['/user/',userId,'website','new']" class="navbar-link">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </div>
