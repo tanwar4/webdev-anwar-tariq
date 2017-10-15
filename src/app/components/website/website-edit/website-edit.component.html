@@ -36,7 +36,7 @@
 
       <!-- OK Button -->
       <div class="navbar-text pull-right">
-        <a  [routerLink]="['/user/',userId,'website']" class="navbar-link">
+        <a  (click)="updateWebsite()" [routerLink]="['/user/',userId,'website']" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -50,7 +50,7 @@
 <div class="body row container-fluid">
   <div class="col-sm-4 hidden-xs">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let w of websites"  [routerLink]="['/detail', w._id]">
+      <li class="list-group-item" *ngFor="let w of websites" >
         <a [routerLink]="['/user/',userId,'website',w._id,'page']"><b>{{w.name}}</b> </a>
         <a [routerLink]="['/user/',userId,'website',w._id]"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
       </li>

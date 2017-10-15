@@ -14,6 +14,7 @@ export class PageEditComponent implements OnInit {
   pageId:string;
   desc:string;
   pages:Page[];
+  page:Page;
   name:string;
 
   constructor(private route:ActivatedRoute,private pageService:PageService) { }
@@ -24,6 +25,9 @@ export class PageEditComponent implements OnInit {
       this.webId = params['wid'];
       this.pageId = params['pid'];
       this.pages  = this.pageService.findPageByWebsiteId(this.webId);
+      this.page = this.pageService.findPageById(this.pageId);
+      this.name = this.page.name;
+      this.desc = this.page.description;
     });
   }
 

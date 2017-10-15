@@ -13,6 +13,7 @@ export class WebsiteEditComponent implements OnInit {
   webId:string;
   desc:string;
   websites:Website[];
+  website:Website;
   name:string;
 
   constructor(private route:ActivatedRoute,private websiteService:WebsiteService) {
@@ -23,7 +24,11 @@ export class WebsiteEditComponent implements OnInit {
       this.userId = params['uid'];
       this.webId = params['wid'];
       this.websites = this.websiteService.findWebsiteByUser(this.userId);
+      this.website = this.websiteService.findWebsiteById(this.webId);
+      this.name = this.website.name;
+      this.desc = this.website.description;
     });
+
   }
 
   updateWebsite(){
