@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
 import {Routing} from './app.routing';
-import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {TestService} from './services/test.service.client';
 import {UserService} from './services/user.service.client';
@@ -28,6 +28,7 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
 import {WebsiteService} from "./services/website.service.client";
 import {PageService} from "./services/page.service.client";
 import {WidgetService} from "./services/widget.service.client";
+import {SortableDirective} from "./directives/sortable.directive";
 
 @NgModule({
   // Declare components here
@@ -49,9 +50,10 @@ import {WidgetService} from "./services/widget.service.client";
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    SortableDirective
   ],
-  imports: [
+  imports:[
     BrowserModule,
     HttpModule,
     FormsModule,

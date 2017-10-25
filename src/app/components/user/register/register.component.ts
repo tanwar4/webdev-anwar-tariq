@@ -27,21 +27,31 @@ export class RegisterComponent implements OnInit {
     this.username = this.registerForm.value.username;
     this.password = this.registerForm.value.password;
     this.password2 = this.registerForm.value.password2;
-    const user:User = this.userService.findUserByUsername(this.username);
-    if(user){
-        console.log(user);
-        this.dupFlag = true;
+    if(this.password !== this.password2) {
+      this.errorFlag= true;
+      return;
     }
-    else if(this.password !== this.password2) {
-       this.errorFlag= true;
-    }
-    else{
-      const newUser:User = new User("","","","","","");
-      newUser.username = this.username;
-      newUser.password = this.password;
-      const id:String = this.userService.createUser(newUser);
-      this.router.navigate(['/user/',id]);
-    }
+    this.userService.findUserByUsername(this.username)
+      .subscribe((user:any)=>{
+        if(user){
+          this.dupFlag = true;
+        }
+
+      },
+      (error:any)=>{
+        const newUser:User = new User("","","","","","");
+        newUser.username = this.username;
+        newUser.password = this.password;
+        this.userService.createUser(newUser)
+          .subscribe((user:any)=> {
+              this.router.navigate(['/user/',user.id]);
+            },
+            (error: any) => {
+              console.error("Error creating profile");
+            });
+      }
+      );
+
   }
   ngOnInit() {
   }

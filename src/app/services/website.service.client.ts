@@ -1,49 +1,53 @@
 import {Injectable} from '@angular/core';
 import {Website} from '../model/website.model.client';
+import {Http,Response} from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class WebsiteService{
+  domain:string  = "http://localhost:3100";
 
-  websites: Website[] = [
-    new Website("123","facebook","345","A social networking site"),
-    new Website("234","facebook","345","A social networking site"),
-    new Website("456","facebook","345","A social networking site"),
-    new Website("567","facebook","789","A social networking site")
-  ];
+  constructor(private http:Http){
 
+  }
 
   findWebsiteById(websiteId:string){
-    return this.websites.find(function (website) {
-      return website._id === websiteId;
-    });
+    var url = this.domain+"/api/website/"+websiteId;
+    return this.http.get(url)
+      .map((response:Response)=>{
+        return response.json();
+      });
   }
   findWebsiteByUser(userId:string) {
-    return this.websites.filter(function (website) {
-      return website.developerId === userId;
-    });
+    var url = this.domain+"/api/user/"+userId+"/website";
+    return this.http.get(url)
+      .map((response:Response)=>{
+        return response.json();
+      });
   }
 
-  createWebsite(website:Website){
-   const webId:string = Math.random().toString();
-    website._id = webId;
-    this.websites.push(website);
+  createWebsite(website:Website,userId:string){
+    var url = this.domain+"/api/user/"+userId+"/website";
+    return this.http.post(url,website)
+      .map((response:Response)=>{
+        return response.json();
+      });
   }
 
   updateWebsite(websiteId:String, website:any){
-    const update:Website = this.websites.find(function (website) {
-      return website._id === websiteId;
-    });
-    update.name = website.name;
-    update.description= website.desc;
+    var url = this.domain+"/api/website/"+websiteId;
+    return this.http.put(url,website)
+      .map((response:Response)=>{
+        return response.json();
+      });
   }
 
   deleteWebsite(websiteId:String){
-    const w:Website = this.websites.find(function (website) {
-      return website._id === websiteId;
-    });
-
-    const index:number = this.websites.indexOf(w);
-    this.websites.splice(index,1);
+    var url = this.domain+"/api/website/"+websiteId;
+    return this.http.delete(url)
+      .map((response:Response)=>{
+        return response.json();
+      });
   }
 
 }

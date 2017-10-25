@@ -1,52 +1,61 @@
 import {Injectable} from '@angular/core';
+import {Http,Response} from '@angular/http';
 import {User} from '../model/user.model.client';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 @Injectable()
 export class UserService{
 
-  users: User[] = [
-                new User("123","alice","alice","Alice","Wonder","alice@gmail.com"),
-                new User("345","bob","bob","Bob","Marley","bob@gmail.com"),
-                new User("567","charley","charley","Charley","Garcia","charley@gmail.com"),
-                new User("789","jose","jose","Jose","Annunzi","jose@gmail.com")
-  ];
+  domain:string  = "http://localhost:3100";
 
+  constructor(private http:Http){
 
+  }
+  findUserByCredentials(userName: string,password:String):Observable<any>{
+    var url = this.domain+"/api/user?username="+userName+"&password="+password;
+    return this.http.get(url)
+      .map((response:Response)=>{
+        return response.json();
+      });
 
-  findUserByCredentials(userId: string,password:String) {
-       return this.users.find(function (user) {
-         return user.username === userId && user.password === password;
-       });
   }
 
-  findUserById(userId:string){
-       return this.users.find(function (user) {
-         return user._id === userId;
-       });
+  findUserById(userId:string):Observable<any>{
+
+    var url = this.domain+"/api/user/"+userId;
+    return this.http.get(url)
+          .map((response:Response)=>{
+            return response.json();
+      });
+
   }
   findUserByUsername(username:string) {
-      return this.users.find(function (user) {
-        return user.username === username;
+    var url = this.domain+"/api/user?username="+username;
+    return this.http.get(url)
+      .map((response:Response)=>{
+        return response.json();
       });
   }
 
   createUser(user:User){
-      const id:String = Math.random().toString();
-      user._id = id;
-      this.users.push(user);
-      return id;
+    var url = this.domain+"/api/user/";
+    return this.http.post(url,user)
+      .map((response:Response)=>{
+        return response.json();
+      });
     }
 
-  updateUser(userId:String, user:any){
-      const update:User = this.users.find(function (user) {
-                      return user._id === userId;
-                      });
-           update.username = user.username;
-           update.email = user.email;
-           update.firstName = user.firstName;
-           update.lastName = user.lastName;
+  updateUser(userId:string, user:any){
+    var url = this.domain+"/api/user/"+userId;
+      return  this.http.put(url,user)
+      .map((response:Response)=>{
+        return response.json();
+      });
+
+
   }
-  /*
+  /* Not required as of now
    deleteUser(userId:String){
       this.update = this.users.find(function (user) {
       return user._id === userId;

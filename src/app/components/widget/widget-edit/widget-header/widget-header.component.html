@@ -17,8 +17,7 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a (click)="createWidget()"
-        [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget']" class="navbar-link">
+      <a (click)="createWidget()" class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -48,8 +47,7 @@
     </div>
 
     <a class="btn btn-danger btn-block "
-       (click)="deleteWidget()"
-       [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget']" >Delete</a>
+       (click)="deleteWidget()">Delete</a>
 
   </form>
 </div>

@@ -1,4 +1,4 @@
-<div [ngSwitch]="widget.widgetType">
+<div *ngIf="isDataAvailable" [ngSwitch]="widget.widgetType">
 
   <div *ngSwitchCase="'HEADING'">
     <app-widget-header></app-widget-header>

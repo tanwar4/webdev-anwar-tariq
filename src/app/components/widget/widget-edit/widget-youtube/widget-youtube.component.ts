@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {WidgetService} from "../../../../services/widget.service.client";
 import {Widget} from "../../../../model/widget.model.client";
 
@@ -17,7 +18,7 @@ export class WidgetYoutubeComponent implements OnInit {
   widgetId:string;
   widget:Widget;
 
-  constructor(private route:ActivatedRoute, private widgetService:WidgetService) {
+  constructor(private route:ActivatedRoute,private router:Router,private widgetService:WidgetService) {
   }
 
   ngOnInit() {
@@ -28,24 +29,39 @@ export class WidgetYoutubeComponent implements OnInit {
       this.widgetId=params['wgid'];
     });
     if(this.widgetId){
-      this.widget = this.widgetService.findWidgetById(this.widgetId);
-      this.width=this.widget.width;
-      this.url = this.widget.url;
+      this.widgetService.findWidgetById(this.widgetId)
+        .subscribe((widget:any)=>{
+            this.widget = widget;
+            this.width=this.widget.width;
+            this.url = this.widget.url;
+        },(error:any)=>{
+
+        });
+
     }
   }
 
   createWidget(){
     if(this.widgetId){
-      this.widgetService.updateWidget({"type": "YOUTUBE", "width": this.width, "url": this.url},this.widgetId);
+      this.widgetService.updateWidget({"type": "YOUTUBE", "width": this.width, "url": this.url},this.widgetId)
+        .subscribe((widgets:any)=>{
+          this.router.navigate(['/user/',this.userId,'website',this.webId,'page',this.pageId,'widget']);
+        },(error:any)=>{});
     }
     else {
-      this.widgetService.createWidget({"type": "YOUTUBE", "width": this.width, "url": this.url}, this.pageId);
+      this.widgetService.createWidget({"type": "YOUTUBE", "width": this.width, "url": this.url}, this.pageId)
+        .subscribe((widgets:any)=>{
+          this.router.navigate(['/user/',this.userId,'website',this.webId,'page',this.pageId,'widget']);
+        },(error:any)=>{});
     }
    }
 
   deleteWidget(){
     if(this.widgetId){
-      this.widgetService.deleteWidget(this.widgetId);
+      this.widgetService.deleteWidget(this.widgetId)
+        .subscribe((widgets:any)=>{
+          this.router.navigate(['/user/',this.userId,'website',this.webId,'page',this.pageId,'widget']);
+        },(error:any)=>{});
     }
 
   }

@@ -24,11 +24,17 @@ export class WidgetListComponent implements OnInit {
       this.userId = params['uid'];
       this.webId = params['wid'];
       this.pageId = params['pid'];
-      this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
+      this.widgetService.findWidgetByPageId(this.pageId)
+        .subscribe((widgets:any)=>{
+          this.widgets = widgets;
+        },(error:any)=>{});
     });
   }
 
   sanitize(url:string) {
      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  chan(){
+    console.log("HELLLLLL");
   }
 }

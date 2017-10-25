@@ -36,7 +36,7 @@
 
       <!-- OK Button -->
       <div class="navbar-text pull-right">
-        <a  (click)="updateWebsite()" [routerLink]="['/user/',userId,'website']" class="navbar-link">
+        <a class="navbar-link" (click)="updateWebsite()"  >
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -71,7 +71,7 @@
         <textarea [(ngModel)]='desc' name ="desc"
           class="form-control" rows="5" id="desc" placeholder="asdsadasdasdsadasdasfasdas"></textarea>
       </div>
-      <a (click)="deleteWebsite()"  [routerLink]="['/user/',userId,'website']" class="btn btn-danger btn-block">Delete</a>
+      <a (click)="deleteWebsite()"  class="btn btn-danger btn-block">Delete</a>
     </form>
   </div>  <!-- Right Pane -->
 
@@ -81,7 +81,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/',userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

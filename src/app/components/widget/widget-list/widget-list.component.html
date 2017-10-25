@@ -29,11 +29,12 @@
 
 <!-- Main content of the body-->
 
-<div class="body container-fluid">
+<div appSortable="chan()" class="body container-fluid">
 
 
 
-  <div *ngFor="let widget of widgets">
+  <div  *ngFor="let widget of widgets">
+
     <div class="wdv-widget">
       <div class="wdv-toolbar">
         <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget',widget._id]">
@@ -45,24 +46,25 @@
 
     <div [ngSwitch]="widget.widgetType">
 
-        <div *ngSwitchCase="'HEADING'">
+        <div  *ngSwitchCase="'HEADING'">
           <h2> {{widget.text}}</h2>
         </div>
 
-        <div *ngSwitchCase="'YOUTUBE'">
+        <div  *ngSwitchCase="'YOUTUBE'">
           <iframe [style.width]="widget.width+'%'" height="315" [src]="sanitize(widget.url)"></iframe>
         </div>
 
-        <div *ngSwitchCase="'IMAGE'">
+        <div  *ngSwitchCase="'IMAGE'">
           <img [style.width]="widget.width+'%'" height="300"
                [src]="sanitize(widget.url)">
         </div>
 
-        <div *ngSwitchCase="'HTML'">
+        <div  *ngSwitchCase="'HTML'">
           <p> {{widget.text}}</p>
         </div>
 
     </div>
+
 
   </div>
 

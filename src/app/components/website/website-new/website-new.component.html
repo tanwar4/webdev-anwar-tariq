@@ -38,7 +38,7 @@
 
       <!-- OK Button -->
       <div class="navbar-text pull-right">
-        <a (click)="addWebsite()" [routerLink]="['/user/',userId,'website']" class="navbar-link">
+        <a (click)="addWebsite()"  class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -81,7 +81,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/',userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
