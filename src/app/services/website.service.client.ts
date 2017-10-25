@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Website} from '../model/website.model.client';
 import {Http,Response} from '@angular/http';
+import {environment} from '../../environments/environment';
 import 'rxjs/Rx';
+
 
 @Injectable()
 export class WebsiteService{
-  domain:string  = "http://localhost:3100";
+  domain = environment.baseUrl;
 
   constructor(private http:Http){
 

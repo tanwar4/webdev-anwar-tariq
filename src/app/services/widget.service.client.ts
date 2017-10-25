@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Widget} from "../model/widget.model.client";
 import {Http,Response} from '@angular/http';
+import {environment} from '../../environments/environment';
 import 'rxjs/Rx';
 
 @Injectable()
 export class WidgetService{
 
-  domain:string  = "http://localhost:3100";
+  domain= environment.baseUrl;
   constructor(private http:Http){
 
   }

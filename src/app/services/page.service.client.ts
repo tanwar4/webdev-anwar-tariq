@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Page} from "../model/page.model.client";
+import {environment} from '../../environments/environment';
 import {Http,Response} from '@angular/http';
 import 'rxjs/Rx';
 
 @Injectable()
 export class PageService{
 
-  domain:string  = "http://localhost:3100";
+  domain = environment.baseUrl;
 
   constructor(private http:Http){
 
