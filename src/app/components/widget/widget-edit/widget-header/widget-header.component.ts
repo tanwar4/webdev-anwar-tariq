@@ -16,7 +16,7 @@ export class WidgetHeaderComponent implements OnInit {
   text:string;
   size:string;
   widgetId:string;
-  widget:Widget;
+  widget:any;
 
   constructor(private route:ActivatedRoute,private router:Router, private widgetService:WidgetService) {
   }
