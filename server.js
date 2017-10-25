@@ -39,7 +39,8 @@ app.set('port', port);
 // Create HTTP server
 const server = http.createServer(app);
 
-var serverSide = require("./server/test-mongodb/app");
+//var serverSide = require("./server/test-mongodb/app");
+var serverSide = require("./server/app");
 serverSide(app);
 
 
