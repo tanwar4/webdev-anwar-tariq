@@ -2279,7 +2279,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    baseUrl: 'https://webdev-anwar-tariq.herokuapp.com/'
+    baseUrl: 'https://webdev-anwar-tariq.herokuapp.com'
 };
 //# sourceMappingURL=environment.js.map
 
