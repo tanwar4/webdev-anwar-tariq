@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {WidgetService} from "../../../../services/widget.service.client";
 import {Widget} from "../../../../model/widget.model.client";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-widget-image',
@@ -19,7 +20,7 @@ export class WidgetImageComponent implements OnInit {
   widgetId:string;
   upload:string;
   widget:any;
-  baseURL:string = "http://localhost:3100";
+  baseURL:string = environment.baseUrl;
   constructor(private route:ActivatedRoute,private router:Router, private widgetService:WidgetService) {
   }
 
