@@ -173,12 +173,13 @@ module.exports= function (app) {
 
        var widget = getWidgetById(widgetId);
        widget.url = 'http://localhost:3100/uploads/' + filename;
-
+       var domain = 'http://localhost:4200/';
        if(process.env.URL_PROD) {
          widget.url = process.env.URL_PROD+'/uploads/'+ filename;
+         domain = proces.env.URL_PROD;
        }
-       
-       var callbackUrl   = "http://localhost:4200/"+"/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+
+       var callbackUrl   = domain+"/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
 
        res.redirect(callbackUrl);
 
