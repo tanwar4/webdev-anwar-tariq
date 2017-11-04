@@ -34,7 +34,4 @@ export class WidgetListComponent implements OnInit {
   sanitize(url:string) {
      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-  chan(){
-    console.log("HELLLLLL");
-  }
 }

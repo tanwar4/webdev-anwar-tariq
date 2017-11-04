@@ -28,7 +28,7 @@
 
 
 <div class="body container-fluid">
-  <form>
+  <form ngNoForm action="http://localhost:3100/api/uploads" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" placeholder="name">
@@ -52,15 +52,43 @@
         type="text" class="form-control" id="width" placeholder="100%">
     </div>
 
+
     <div class="form-group">
-      <label for="exampleInputFile">Upload</label>
-      <input type="file" id="exampleInputFile" class="form-control">
+      <label for="myFile">
+        Upload
+      </label>
+      <input [(ngModel)]="upload"
+             required
+             name="myFile"
+             type="file"
+             class="form-control"
+             id="myFile"
+             value="100%">
     </div>
-    <a class="btn btn-primary btn-block"
-       [routerLink]="[]">Upload Image</a>
+
+    <div class="form-group">
+      <input  name="widgetId" value="{{widgetId}}"   style="display: none"/>
+      <input  name="webId" value="{{webId}}"   style="display: none"/>
+      <input  name="pageId" value="{{pageId}}"   style="display: none"/>
+      <input  name="userId" value="{{userId}}"   style="display: none"/>
+      <button type="submit" class="form-control btn btn-primary">
+        Upload Image
+      </button>
+    </div>
+
+
     <a class="btn btn-danger btn-block " (click)="deleteWidget()">Delete</a>
 
+
   </form>
+
+  <button type="submit" class="form-control btn btn-primary"
+          [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new','image','search']">
+    Search Image
+
+
+  </button>
+
 </div>
 
 <!-- Footer -->

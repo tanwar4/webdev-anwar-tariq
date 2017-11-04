@@ -3,6 +3,7 @@
  */
 import {Directive, ElementRef, EventEmitter, Output} from '@angular/core';
 import {AfterViewInit} from '@angular/core';
+import {WidgetService} from "../services/widget.service.client";
 declare var jQuery: any;
 
 @Directive({
@@ -14,7 +15,7 @@ export class SortableDirective implements AfterViewInit {
 
   initialIndex: any;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef,private widgetService:WidgetService) {}
   ngAfterViewInit() {
     this.appSortable(this);
   }

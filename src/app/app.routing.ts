@@ -21,10 +21,11 @@ import {WidgetYoutubeComponent}from './components/widget/widget-edit/widget-yout
 import {PageListComponent} from "./components/page/page-list/page-list.component";
 import {PageNewComponent} from "./components/page/page-new/page-new.component";
 import {PageEditComponent} from "./components/page/page-edit/page-edit.component";
+import {FlickrImageSearchComponent} from "./components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component";
 
 
 const APP_ROUTES: Routes = [
-  {path: '', component : LoginComponent},
+  {path: '', component : HomeComponent},
   {path: 'test', component: TestComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -40,6 +41,7 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/website/:wid/page/:pid/widget/new/heading', component: WidgetHeaderComponent },
   {path: 'user/:uid/website/:wid/page/:pid/widget/new/youtube', component: WidgetYoutubeComponent },
   {path: 'user/:uid/website/:wid/page/:pid/widget/new/image', component: WidgetImageComponent },
+  {path: 'user/:uid/website/:wid/page/:pid/widget/new/image/search', component: FlickrImageSearchComponent },
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent }
 
 ];

@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--back mark-->
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Search Flickr</b>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="body container-fluid">
+  <div class="input-group">
+    <input [(ngModel)]="searchText" type="text" class="form-control">
+      <span class="input-group-btn">
+         <a (click)="searchPhotos()" class="btn btn-default" type="button">
+           <span class="glyphicon glyphicon-search"></span>
+         </a>
+      </span>
+  </div>
+
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user/',userId]">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

@@ -17,8 +17,9 @@ export class WidgetImageComponent implements OnInit {
   width:string;
   url:string;
   widgetId:string;
+  upload:string;
   widget:any;
-
+  baseURL:string = "http://localhost:3100";
   constructor(private route:ActivatedRoute,private router:Router, private widgetService:WidgetService) {
   }
 
