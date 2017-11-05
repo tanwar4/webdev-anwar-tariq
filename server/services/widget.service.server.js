@@ -176,7 +176,7 @@ module.exports= function (app) {
        var domain = 'http://localhost:4200';
        if(process.env.URL_PROD) {
          widget.url = process.env.URL_PROD+'/uploads/'+ filename;
-         domain = proces.env.URL_PROD;
+         domain = proces.env.URL_PROD+':'process.env.PORT;
        }
 
        var callbackUrl   = domain+"/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
