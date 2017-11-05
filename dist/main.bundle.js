@@ -1846,6 +1846,7 @@ var WidgetListComponent = (function () {
             _this.widgetService.findWidgetByPageId(_this.pageId)
                 .subscribe(function (widgets) {
                 _this.widgets = widgets;
+                console.log(_this.widgets);
             }, function (error) { });
         });
     };
