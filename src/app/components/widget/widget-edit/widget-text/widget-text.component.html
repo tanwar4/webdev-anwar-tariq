@@ -1,0 +1,79 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!--back mark-->
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Widget Edit</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a (click)="createWidget()" class="navbar-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="body container-fluid">
+  <form>
+    Text
+    <input [(ngModel)]="widget.text" name="text" class="form-control"/>
+
+    Rows
+    <input [(ngModel)]="widget.rows"  name="rows" class="form-control" type="number"/>
+    <label for="Name">Name</label>
+    <div>
+      <input [(ngModel)]="widget.name"
+             type="text"
+             class="form-control"
+             id="Name"
+             name="name"
+             placeholder="Name">
+    </div>
+
+    Placeholder
+    <input [(ngModel)]="widget.placeholder" name="placeholder" class="form-control" required/>
+    <p></p>
+    <div class="input-group">
+      <input type="text"
+             readonly
+             value="Formatted"
+             class="form-control"/>
+ <span class="input-group-addon">
+     <input [(ngModel)]="widget.formatted" name="formatted"
+            type="checkbox"/>
+ </span>
+    </div>
+
+
+
+
+    <a class="btn btn-danger btn-block "
+       (click)="deleteWidget()">Delete</a>
+
+  </form>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user/',userId]">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

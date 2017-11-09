@@ -10,10 +10,12 @@ var WidgetSchema = mongoose.Schema({
   width:String,
   url:String,
   rows:Number,
+  size:Number,
   class:String,
   icon:String,
   deletable:String,
-  formatted:String
+  formatted:String,
+  placeholder:String
 },{collection:'widget'});
 
 module.exports =  WidgetSchema;

@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!--back mark-->
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/user/',userId,'website',webId,'page',pageId,'widget','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Widget Edit</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a (click)="createWidget()" class="navbar-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="body container-fluid">
+  <form>
+    <quill-editor [(ngModel)]="text" name="text"></quill-editor>
+
+    <a class="btn btn-danger btn-block "
+       (click)="deleteWidget()">Delete</a>
+
+  </form>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user/',userId]">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
