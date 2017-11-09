@@ -44,10 +44,10 @@
       </div>
     </div>
 
-    <div [ngSwitch]="widget.widgetType">
+    <div [ngSwitch]="widget.type">
 
         <div  *ngSwitchCase="'HEADING'">
-          <h2> {{widget.text}}</h2>
+          <h1> {{widget.text}}</h1>
         </div>
 
         <div  *ngSwitchCase="'YOUTUBE'">

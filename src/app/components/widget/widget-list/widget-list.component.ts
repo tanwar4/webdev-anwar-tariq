@@ -13,7 +13,7 @@ export class WidgetListComponent implements OnInit {
   userId:string;
   webId:string;
   pageId:string;
-  widgets:Widget[];
+  widgets:any[];
   url:string;
 
   constructor(private route:ActivatedRoute, private widgetService:WidgetService, private sanitizer:DomSanitizer) {
