@@ -293,7 +293,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n  <h1>\r\n    Angular 4 MEAN stack app\r\n  </h1>\r\n\r\n\r\n  <h3>\r\n    App works\r\n  </h3>\r\n\r\n\r\n  <h4>\r\n    <a href=\"test\">Test MongoDB</a>\r\n  </h4>\r\n\r\n\r\n  <h4>\r\n    <a href=\"login\">Assignment4</a>\r\n  </h4>\r\n\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n  <h1>\r\n    Angular 4 MEAN stack app\r\n  </h1>\r\n\r\n\r\n  <h3>\r\n    App works\r\n  </h3>\r\n\r\n\r\n  <h4>\r\n    <a href=\"test\">Test MongoDB</a>\r\n  </h4>\r\n\r\n\r\n  <h4>\r\n    <a href=\"login\">Assignment5</a>\r\n  </h4>\r\n\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -2133,7 +2133,7 @@ var WidgetListComponent = (function () {
             _this.widgetService.findWidgetByPageId(_this.pageId)
                 .subscribe(function (widgets) {
                 _this.widgets = widgets;
-                console.log(_this.widgets);
+                //  console.log(this.widgets);
             }, function (error) { });
         });
     };
