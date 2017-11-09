@@ -892,8 +892,7 @@ module.exports = "<div class=\"container-fluid\">\n  <div *ngIf=\"dupFlag\"\n   
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_user_model_client__ = __webpack_require__("../../../../../src/app/model/user.model.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -903,7 +902,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -931,12 +929,13 @@ var RegisterComponent = (function () {
                 _this.dupFlag = true;
             }
         }, function (error) {
-            var newUser = new __WEBPACK_IMPORTED_MODULE_3__model_user_model_client__["a" /* User */]("", "", "", "", "", "");
-            newUser.username = _this.username;
-            newUser.password = _this.password;
+            var newUser = {
+                username: _this.username,
+                password: _this.password
+            };
             _this.userService.createUser(newUser)
                 .subscribe(function (user) {
-                _this.router.navigate(['/user/', user.id]);
+                _this.router.navigate(['/user/', user._id]);
             }, function (error) {
                 console.error("Error creating profile");
             });
@@ -948,7 +947,7 @@ var RegisterComponent = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('f'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* NgForm */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* NgForm */]) === "function" && _a || Object)
 ], RegisterComponent.prototype, "registerForm", void 0);
 RegisterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -1174,8 +1173,7 @@ module.exports = "\n<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <d
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebsiteNewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_website_model_client__ = __webpack_require__("../../../../../src/app/model/website.model.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__ = __webpack_require__("../../../../../src/app/services/website.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_website_service_client__ = __webpack_require__("../../../../../src/app/services/website.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1185,7 +1183,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -1209,7 +1206,7 @@ var WebsiteNewComponent = (function () {
     WebsiteNewComponent.prototype.addWebsite = function () {
         var _this = this;
         if (this.name) {
-            this.websiteService.createWebsite(new __WEBPACK_IMPORTED_MODULE_2__model_website_model_client__["a" /* Website */]("", this.name, this.userId, this.desc), this.userId)
+            this.websiteService.createWebsite({ "name": this.name, "developerId": this.userId, "description": this.desc }, this.userId)
                 .subscribe(function (data) {
                 _this.router.navigate(['/user', _this.userId, 'website']);
             }, function (error) { error.log("failed to delete website"); });
@@ -1223,7 +1220,7 @@ WebsiteNewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/website/website-new/website-new.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/website/website-new/website-new.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_website_service_client__["a" /* WebsiteService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_website_service_client__["a" /* WebsiteService */]) === "function" && _c || Object])
 ], WebsiteNewComponent);
 
 var _a, _b, _c;
@@ -1930,52 +1927,6 @@ SortableDirective = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=sortable.directive.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/model/user.model.client.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/**
- * Created by tariq on 10/7/2017.
- */
-var User = (function () {
-    function User(_id, username, password, firstName, lastName, email) {
-        this._id = _id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-    return User;
-}());
-
-//# sourceMappingURL=user.model.client.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/model/website.model.client.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Website; });
-/**
- * Created by tariq on 10/7/2017.
- */
-var Website = (function () {
-    function Website(_id, name, developerId, description) {
-        this._id = _id;
-        this.developerId = developerId;
-        this.description = description;
-        this.name = name;
-    }
-    return Website;
-}());
-
-//# sourceMappingURL=website.model.client.js.map
 
 /***/ }),
 

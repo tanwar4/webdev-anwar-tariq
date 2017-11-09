@@ -11,7 +11,7 @@ import {WebsiteService} from "../../../services/website.service.client";
 })
 export class WebsiteNewComponent implements OnInit {
   userId:string;
-  websites:Website[];
+  websites:any[];
   name:string;
   desc:string;
 
@@ -31,7 +31,7 @@ export class WebsiteNewComponent implements OnInit {
 
   addWebsite(){
     if(this.name) {
-      this.websiteService.createWebsite(new Website("", this.name, this.userId, this.desc),this.userId)
+      this.websiteService.createWebsite({"name":this.name, "developerId":this.userId,"description":this.desc},this.userId)
         .subscribe((data:any)=> {
           this.router.navigate(['/user',this.userId,'website']);
 

@@ -28,7 +28,7 @@ export class WebsiteService{
       });
   }
 
-  createWebsite(website:Website,userId:string){
+  createWebsite(website:any,userId:string){
     var url = this.domain+"/api/user/"+userId+"/website";
     return this.http.post(url,website)
       .map((response:Response)=>{

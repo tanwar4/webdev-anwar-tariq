@@ -35,11 +35,12 @@ export class UserService{
     var url = this.domain+"/api/user?username="+username;
     return this.http.get(url)
       .map((response:Response)=>{
+
         return response.json();
       });
   }
 
-  createUser(user:User){
+  createUser(user:any){
     var url = this.domain+"/api/user/";
     return this.http.post(url,user)
       .map((response:Response)=>{

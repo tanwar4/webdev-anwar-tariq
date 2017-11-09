@@ -39,12 +39,12 @@ export class RegisterComponent implements OnInit {
 
       },
       (error:any)=>{
-        const newUser:User = new User("","","","","","");
-        newUser.username = this.username;
-        newUser.password = this.password;
+        const newUser= {
+        username :this.username,
+        password :this.password};
         this.userService.createUser(newUser)
           .subscribe((user:any)=> {
-              this.router.navigate(['/user/',user.id]);
+              this.router.navigate(['/user/',user._id]);
             },
             (error: any) => {
               console.error("Error creating profile");
