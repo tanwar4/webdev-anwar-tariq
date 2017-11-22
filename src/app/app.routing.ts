@@ -24,6 +24,8 @@ import {PageEditComponent} from "./components/page/page-edit/page-edit.component
 import {FlickrImageSearchComponent} from "./components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component";
 import {WidgetHtmlComponent} from "./components/widget/widget-edit/widget-html/widget-html.component";
 import {WidgetTextComponent} from "./components/widget/widget-edit/widget-text/widget-text.component";
+import {AuthGuard} from "./services/auth-guard.service";
+
 
 
 const APP_ROUTES: Routes = [
@@ -31,11 +33,12 @@ const APP_ROUTES: Routes = [
   {path: 'test', component: TestComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user/:uid', component: ProfileComponent},
-  {path: 'user/:uid/website', component: WebsiteListComponent },
-  {path: 'user/:uid/website/new', component: WebsiteNewComponent },
-  {path: 'user/:uid/website/:wid', component: WebsiteEditComponent },
-  {path: 'user/:uid/website/:wid/page', component: PageListComponent },
+  {path: 'user/:uid', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'user/:uid/website', component: WebsiteListComponent , canActivate:[AuthGuard]},
+  {path: 'user/:uid/website/new', component: WebsiteNewComponent, canActivate:[AuthGuard] },
+  {path: 'user/:uid/website/:wid', component: WebsiteEditComponent, canActivate:[AuthGuard] },
+  {path: 'user/:uid/website/:wid/page', component: PageListComponent, canActivate:[AuthGuard]},
   {path: 'user/:uid/website/:wid/page/new', component: PageNewComponent },
   {path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent },
   {path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},

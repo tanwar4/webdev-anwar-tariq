@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {UserService} from "../../../services/user.service.client";
 import {User} from "../../../model/user.model.client";
 import {NgForm} from '@angular/forms';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   dupUserMsg = 'User Already Exists';
   newuser={};
 
-  constructor(private router:Router,private userService:UserService) {}
+  constructor(private router:Router,private userService:UserService, private sharedService:SharedService) {}
 
   register(){
     this.username = this.registerForm.value.username;
@@ -31,7 +32,15 @@ export class RegisterComponent implements OnInit {
       this.errorFlag= true;
       return;
     }
-    this.userService.findUserByUsername(this.username)
+
+    this.userService.register(this.username,this.password)
+      .subscribe((user:any)=>{
+        console.log(user);
+        this.sharedService.user=user;
+        this.router.navigate(['profile']);
+    });
+
+   /* this.userService.findUserByUsername(this.username)
       .subscribe((user:any)=>{
         if(user){
           this.dupFlag = true;
@@ -49,8 +58,7 @@ export class RegisterComponent implements OnInit {
             (error: any) => {
               console.error("Error creating profile");
             });
-      }
-      );
+      });*/
 
   }
   ngOnInit() {

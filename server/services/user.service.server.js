@@ -2,15 +2,84 @@
  * Created by tariq on 10/21/2017.
  */
 module.exports= function (app) {
+  var passport = require('passport');
+  var LocalStrategy = require('passport-local').Strategy;
+  var userModel = require('../model/user/user.model.server');
+
 
   app.post("/api/user",createUser);
   app.get("/api/user" ,findUserByCredentials);
   app.get("/api/user/:userId",findUserById);
   app.put("/api/user/:userId",updateUser);
+  app.post ('/api/login', passport.authenticate('local'), login);
+  app.post('/api/register', register);
+  app.post('/api/logout', logout);
+  app.post('/api/loggedIn', loggedIn);
 
-  var userModel = require('../model/user/user.model.server');
 
-  function createUser(req,res) {
+
+
+
+  passport.use(new LocalStrategy(localStrategy));
+
+
+  function login(req, res) {
+    console.log(req.user);
+    var user = req.user;
+    res.json(user);
+  }
+
+  function logout(req, res) {
+    req.logOut();
+    res.send(200);
+  }
+
+  function loggedIn(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+  }
+
+  function register (req, res) {
+    var user = req.body;
+    userModel
+      .createUser(user)
+      .then(
+        function(user){
+          if(user){
+            req.login(user, function(err) {
+              if(err) {
+                res.status(400).send(err);
+              } else {
+                res.json(user);
+              }
+            });
+          }
+        });
+  }
+
+
+
+  function localStrategy(username, password, done) {
+    userModel
+      .findUserByCredentials(username, password)
+      .then(
+        function(user) {
+          if(user){
+            if(user.username === username && user.password === password) {
+              return done(null, user);
+            }
+          }else {
+            return done(null, false);
+          }
+        },
+        function(err) {
+          if (err) {
+            return done(err); }
+        }
+      );
+  }
+
+
+    function createUser(req,res) {
     var user = req.body;
      userModel.createUser(user)
        .then(function (user) {
@@ -75,5 +144,30 @@ module.exports= function (app) {
         });
     return;
   }
+
+  passport.serializeUser(serializeUser);
+
+  function serializeUser(user, done) {
+    done(null, user);
+  }
+
+  passport.deserializeUser(deserializeUser);
+
+  function deserializeUser(user, done) {
+    userModel
+      .findUserById(user._id)
+      .then(
+        function(user){
+          done(null, user);
+        },
+        function(err){
+          done(err, null);
+        }
+      );
+  }
+
+
+
+
 
 }

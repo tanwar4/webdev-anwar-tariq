@@ -4,6 +4,7 @@ import {UserService} from "../../../services/user.service.client";
 import {Router} from '@angular/router';
 import {User} from "../../../model/user.model.client";
 import {Observable} from "rxjs/Observable";
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-profile',
@@ -12,19 +13,26 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProfileComponent implements OnInit {
   userId:string;
-  user:{username:""};
+  user:{};
   isDataAvailable:boolean = false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private  userService:UserService) {
+  constructor(private route:ActivatedRoute,private router:Router,private  userService:UserService ,
+              private sharedService:SharedService) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+
+
+    this.route.params.subscribe(params =>{
+      console.log(this.sharedService.user);
+      this.user = this.sharedService.user || this.user;
+    });
+/*    this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.userService.findUserById(this.userId)
         .subscribe(
             (user:any)=>{
-              this.user = user;
+              this.user = this.sharedService.user || user;
               this.isDataAvailable=true;
 
             },
@@ -32,7 +40,7 @@ export class ProfileComponent implements OnInit {
              console.error("Error getting user");
              return Observable.throw(error);
             });
-    });
+    });*/
   }
 
   update(){
@@ -42,6 +50,14 @@ export class ProfileComponent implements OnInit {
            },
           (error: any) => {
           });
+  }
+
+
+  logout(){
+    this.userService.logout()
+      .subscribe((data:any)=>{
+        this.router.navigate(['/login']);
+      });
   }
 
 }
