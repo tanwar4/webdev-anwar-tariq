@@ -4,6 +4,7 @@ import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../model/user.model.client';
 import {NgForm} from '@angular/forms';
 import {SharedService} from "../../../services/shared.service.client";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   password:string;
   errorFlag: boolean;
   errorMsg = 'Invalid username or password !';
+  baseURL:string = environment.baseUrl;
 
   constructor(private router:Router,private userService:UserService, private  sharedService:SharedService) {}
 

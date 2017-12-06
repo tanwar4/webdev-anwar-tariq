@@ -10,13 +10,13 @@ UserModel.findUserById = findUserById;
 UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUserName = findUserByUsername;
 UserModel.updateUser = updateUser;
-var api = {
-  findUserByFacebookId: findUserByFacebookId,
-};
-
+UserModel.findUserByFacebookId = findUserByFacebookId;
 
 module.exports = UserModel;
 
+function  findUserByFacebookId(facebookId) {
+ return UserModel.findOne({'facebook.id':facebookId});
+}
 
 function createUser(user){
   return UserModel.create(user);
