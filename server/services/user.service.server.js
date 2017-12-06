@@ -21,8 +21,8 @@ module.exports= function (app) {
 
   app.get('/facebook/oauth2callback',
             passport.authenticate('facebook',{
-              successRedirect: 'https://webdev-anwar-tariq.herokuapp.com/profile',
-              failureRedirect: 'https://webdev-anwar-tariq.herokuapp.com/login'
+              successRedirect: '/profile',
+              failureRedirect: '/login'
             }));
 
 
