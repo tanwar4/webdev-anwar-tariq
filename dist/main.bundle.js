@@ -864,7 +864,6 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            console.log(_this.sharedService.user);
             _this.user = _this.sharedService.user || _this.user;
         });
         /*    this.route.params.subscribe(params => {
@@ -1148,7 +1147,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/website/website-list/website-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--back mark-->\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/',userId]\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </p>\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header pull-left\">\n      <a class=\"navbar-brand thick\">\n        <b>Websites</b>\n      </a>\n    </p>\n\n    <!--plus mark-->\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId,'website','new']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n\n<div class=\"body container-fluid\">\n\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\" *ngFor=\"let w of websites\"  [routerLink]=\"['/detail', w._id]\">\n      <a [routerLink]=\"['/user/',userId,'website',w._id,'page']\"><b>{{w.name}}</b> </a>\n      <a [routerLink]=\"['/user/',userId,'website',w._id]\"> <span class=\"pull-right glyphicon glyphicon-cog\"></span></a>\n    </li>\n  </ul>\n\n</div>\n\n\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId]\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
+module.exports = "\n<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--back mark-->\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/',userId]\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </p>\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header pull-left\">\n      <a class=\"navbar-brand thick\">\n        <b>Websites</b>\n      </a>\n    </p>\n\n    <!--plus mark-->\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId,'website','new']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n\n<div class=\"body container-fluid\">\n\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\" *ngFor=\"let w of websites\">\n      <a [routerLink]=\"['/user/',userId,'website',w._id,'page']\"><b>{{w.name}}</b> </a>\n      <a [routerLink]=\"['/user/',userId,'website',w._id]\"> <span class=\"pull-right glyphicon glyphicon-cog\"></span></a>\n    </li>\n  </ul>\n\n</div>\n\n\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user/',userId]\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -2776,7 +2775,6 @@ var WidgetService = (function () {
         var url = this.domain + "/api/widget/" + widgetId;
         return this.http.get(url)
             .map(function (response) {
-            console.log(response.json());
             return response.json();
         });
     };
