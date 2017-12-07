@@ -29,7 +29,7 @@
 <div class="body container-fluid">
 
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let w of websites"  [routerLink]="['/detail', w._id]">
+    <li class="list-group-item" *ngFor="let w of websites">
       <a [routerLink]="['/user/',userId,'website',w._id,'page']"><b>{{w.name}}</b> </a>
       <a [routerLink]="['/user/',userId,'website',w._id]"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
     </li>

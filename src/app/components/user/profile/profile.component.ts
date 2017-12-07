@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
 
 
     this.route.params.subscribe(params =>{
-      console.log(this.sharedService.user);
       this.user = this.sharedService.user || this.user;
     });
 /*    this.route.params.subscribe(params => {

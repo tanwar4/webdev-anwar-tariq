@@ -35,9 +35,11 @@ const APP_ROUTES: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'user/:uid', component: ProfileComponent, canActivate:[AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+
   {path: 'user/:uid/website', component: WebsiteListComponent , canActivate:[AuthGuard]},
   {path: 'user/:uid/website/new', component: WebsiteNewComponent, canActivate:[AuthGuard] },
   {path: 'user/:uid/website/:wid', component: WebsiteEditComponent, canActivate:[AuthGuard] },
+  
   {path: 'user/:uid/website/:wid/page', component: PageListComponent, canActivate:[AuthGuard]},
   {path: 'user/:uid/website/:wid/page/new', component: PageNewComponent },
   {path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent },

@@ -23,7 +23,6 @@ export class WidgetService{
     var url = this.domain+"/api/widget/"+widgetId;
     return this.http.get(url)
       .map((response:Response)=>{
-        console.log(response.json());
         return response.json();
       });
   }
