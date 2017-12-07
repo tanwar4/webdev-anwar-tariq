@@ -53,7 +53,7 @@
   <div class="col-sm-4 hidden-xs">
     <ul class="list-group">
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let w of websites"  [routerLink]="['/detail', w._id]">
+        <li class="list-group-item" *ngFor="let w of websites">
           <a [routerLink]="['/user/',userId,'website',w._id,'page']"><b>{{w.name}}</b> </a>
           <a [routerLink]="['/user/',userId,'website',w._id]"> <span class="pull-right glyphicon glyphicon-cog"></span></a>
         </li>
@@ -65,7 +65,8 @@
   <div class="col-sm-8">
     <div class="form-group">
       <label for="inputName">Name</label>
-      <input [(ngModel)]='name' type="text" class="form-control" id="inputName" placeholder="Name">
+      <input [(ngModel)]='name' type="text" class="form-control" id="inputName" placeholder="Name" required >
+
     </div>
 
     <div class="form-group">
