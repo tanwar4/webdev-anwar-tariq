@@ -304,7 +304,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n  <h1>\r\n    Angular 4 MEAN stack app\r\n  </h1>\r\n\r\n\r\n  <h3>\r\n    App works\r\n  </h3>\r\n\r\n\r\n  <h4>\r\n    <a href=\"test\">Test MongoDB</a>\r\n  </h4>\r\n\r\n\r\n  <h4>\r\n    <a href=\"login\">Assignment5</a>\r\n  </h4>\r\n\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n  <h1>\r\n    Course : Web Development\r\n  </h1>\r\n\r\n\r\n  <h3>\r\n    App works\r\n  </h3>\r\n\r\n\r\n  <h4>\r\n    <a href=\"test\">Test MongoDB</a>\r\n  </h4>\r\n\r\n\r\n  <h4>\r\n    <a href=\"login\">Assignment</a>\r\n  </h4>\r\n\r\n  <h4>\r\n    <a href=\"https://github.com/tanwar4/webdev-anwar-tariq\">Assignment Github </a>\r\n  </h4>\r\n\r\n\r\n  <h4>\r\n    <a href=\"https://trips-diaries.herokuapp.com/\">Final Project </a>\r\n  </h4>\r\n\r\n  <h4>\r\n    <a href=\"https://github.com/tanwar4/TripMemories\">Project Github </a>\r\n  </h4>\r\n\r\n\r\n</div>\r\n\r\n"
 
 /***/ }),
 
